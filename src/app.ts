@@ -30,9 +30,9 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction): void => {
 console.log("App Is Running");
 
 // Import Routes
-// import userRouter from "./routes/user.routes";
+import userRouter from "./routes/user.routes";
 
 // Routes Declaration
-// app.use("/api/v1/users", userRouter);
+app.use("/api/v1/users", userRouter);
 
 export default app;
