@@ -29,7 +29,7 @@ const generateAccessAndRefreshTokens = async (
       500,
       "Something Went Wrong While Generating Access And Refresh Token"
     );
-    next();
+    // next();
   }
 };
 
@@ -264,7 +264,7 @@ const refreshAccessToken = asyncHandler(
         incomingRefreshToken,
         `${process.env.REFRESH_TOKEN_SECRET}`
       );
-      const user = await User.findById(decodedToken?._id);
+      const user = await User.findById((decodedToken as jwt.JwtPayload)?._id);
 
       if (!user || incomingRefreshToken !== user.refreshToken) {
         throw new ApiError(401, "Invalid or expired refresh token");
